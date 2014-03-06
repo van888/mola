@@ -1,0 +1,9 @@
+{% if tickers.count > 0 %}
+
+    {% for ticker in tickers %}
+        <li><a href="{{ ticker.get_absolute_url }}">{{ ticker.symbol }}:{{ ticker.company_name|truncatechars:"16" }}</a> </li>
+    {% endfor %}
+
+{% else %}
+    <li> no ticker found.</li>
+{% endif %}

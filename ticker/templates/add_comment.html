@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap_toolkit %}
+
+<head>
+    <title></title>
+    <h3>{{ ticker.symbol }}</h3>
+    <p>Please add your comments to {{ ticker.company_name }} </p>
+</head>
+<body>
+
+{% block content %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <h1 class="page-header">{{ ticker.company_name }} <span style="font-size: 14px;">({{ ticker.symbol }}:{{ ticker.exchange_name }})</span></h1>
+    <form class="form" action="/finance/{{ ticker.symbol }}/add_comment/" method="post">{%  csrf_token %}
+        <ul>
+            {{ form|as_bootstrap }}
+        </ul>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-sm btn-primary  btn-block-cust">Post Comment</button>
+        </div>
+        <div>
+            <button class="btn btn-sm btn-warning  btn-block-cust" href="/finance/{{ ticker.symbol }}/">   Cancel   </button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
+
+</body>
+
+

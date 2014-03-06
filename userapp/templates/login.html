@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load bootstrap_toolkit %}
+
+{% block title %}
+    <title>Please login</title>
+{% endblock %}
+<body>
+{% block content %}
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h2 class="form-signin-heading">Please sign in</h2>
+        {% if form.errors %}
+            <p class="error"> Not a valid username or password.</p>
+        {% endif %}
+
+        <form class="form-signin" role="form" action="/account/auth/" method="post"> {%  csrf_token %}
+            <ul>
+                {{ form|as_bootstrap }}
+            </ul>
+            <label for="username">User name:</label>
+            <input class="form-control" type="text" name="username" value="" id="username">
+
+            <label for="password">Password:</label>
+            <input class="form-control" type="password" name="password" value="" id="password">
+
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in"/>
+
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block example-content %}
+{% endblock %}
+</body>
+
+
+
+
+
+
+

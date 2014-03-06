@@ -1,0 +1,15 @@
+{% block content %}
+</div>
+    <div id="content">
+        {% for t in tickers %}
+        <a href="/finance/{{ t.symbol }}/">{{ t.symbol }}</a>
+
+            <p>{{ t.business_des }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+<footer style="border-style: solid;">
+    <p>footer place holder block</p>
+</footer>

@@ -1,0 +1,579 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Mola Ratio</title>
+{% endblock %}
+
+{% block content %}
+  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <h1 class="page-header">{{ ticker.company_name }} <span style="font-size: 14px;">({{ ticker.symbol }}:{{ ticker.exchange_name }})</span></h1>
+    <h2 class="sub-header">#Management Effectiveness</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Latest Value</th>
+                  <th>Industry Average</th>
+                  <th>Industry Low</th>
+                  <th>Industry High</th>
+                  <th>Sector Average</th>
+                  <th>Market Average</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Return on Assets</td>
+                  <td>{{ ticker.ratio.Return_on_Assets }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Return on Equity</td>
+                  <td>{{ ticker.ratio.Return_on_Equity }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Return on Total Capital</td>
+                  <td>{{ ticker.ratio.Return_on_Total_Capital }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Return on Invested Capital</td>
+                  <td>{{ ticker.ratio.Return_on_Invested_Capital }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Average Return on Invested Cap</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Average Return on Assets</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    <h2 class="sub-header">#Valuation</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Latest Value</th>
+                  <th>Industry Average</th>
+                  <th>Industry Low</th>
+                  <th>Industry High</th>
+                  <th>Sector Average</th>
+                  <th>Market Average</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PE</td>
+                  <td>{{ ticker.ratio.PE_Current }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>PE (with extraordinary items)</td>
+                  <td>{{ ticker.ratio.PE_Ratio_extra_items }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>PE (without extraordinary items)</td>
+                  <td>{{ ticker.ratio.PE_Ratio_no_extra_items }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Price to Sales</td>
+                  <td>{{ ticker.ratio.PSales_Ratio }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Price to Book</td>
+                  <td>{{ ticker.ratio.PBook_Ratio }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Price to Cash Flow</td>
+                  <td>{{ ticker.ratio.PCashFlow_Ratio }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Enterprise Value to Sales</td>
+                  <td>{{ ticker.ratio.EV_to_Sales }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Enterprise Value to EBITDA</td>
+                  <td>{{ ticker.ratio.EV_to_EBITDA }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Total Debt to Enterprise Value</td>
+                  <td>{{ ticker.ratio.Total_Debt_to_EV }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+    <h2 class="sub-header">#Profitability</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Latest Value</th>
+                  <th>Industry Average</th>
+                  <th>Industry Low</th>
+                  <th>Industry High</th>
+                  <th>Sector Average</th>
+                  <th>Market Average</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Gross Margin</td>
+                  <td>{{ ticker.ratio.Gross_Margin }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Operating Margin</td>
+                  <td>{{ ticker.ratio.Operating_Margin }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Pretax Margin</td>
+                  <td>{{ ticker.ratio.Pretax_Margin }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Net Margin</td>
+                  <td>{{ ticker.ratio.Net_Margin }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Gross Margin - 5 Yr Avg</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>EBITDA - 5 Yr Avg</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Pre-Tax Margin - 5 Yr Avg</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Net Profit Margin - 5 Yr Avg</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    <h2 class="sub-header">#Liquidity</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Latest Value</th>
+                  <th>Industry Average</th>
+                  <th>Industry Low</th>
+                  <th>Industry High</th>
+                  <th>Sector Average</th>
+                  <th>Market Average</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Current Ratio</td>
+                  <td>{{ ticker.ratio.Current_Ratio }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Quick Ratio</td>
+                  <td>{{ ticker.ratio.Quick_Ratio }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Cash Ratio</td>
+                  <td>{{ ticker.ratio.Cash_Ratio }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    <h2 class="sub-header">#Efficiency</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Latest Value</th>
+                  <th>Industry Average</th>
+                  <th>Industry Low</th>
+                  <th>Industry High</th>
+                  <th>Sector Average</th>
+                  <th>Market Average</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Receivables Turnover</td>
+                  <td>{{ ticker.ratio.Receivables_Turnover }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Total Asset Turnover</td>
+                  <td>{{ ticker.ratio.Total_Asset_Turnover }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Inventory Turnover</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    <h2 class="sub-header">#Capital Structure</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Latest Value</th>
+                  <th>Industry Average</th>
+                  <th>Industry Low</th>
+                  <th>Industry High</th>
+                  <th>Sector Average</th>
+                  <th>Market Average</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Total Debt to Total Equity</td>
+                  <td>{{ ticker.ratio.Total_Debt_to_Total_Equity }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Total Debt to Total Capital</td>
+                  <td>{{ ticker.ratio.Total_Debt_to_Total_Capital }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Total Debt to Total Assets</td>
+                  <td>{{ ticker.ratio.Total_Debt_to_Total_Assets }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Long-Term Debt to Equity</td>
+                  <td>{{ ticker.ratio.LongTerm_Debt_to_Equity }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Long-Term Debt to Total Capital</td>
+                  <td>{{ ticker.ratio.LongTerm_Debt_to_Total_Capital }}</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    <h2 class="sub-header">#Growth Outlook</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Latest Value</th>
+                  <th>Industry Average</th>
+                  <th>Industry Low</th>
+                  <th>Industry High</th>
+                  <th>Sector Average</th>
+                  <th>Market Average</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sales - 5 Yr Growth Rate (%)</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>EPS (MRQ) vs Qtr 1 Yr Ago (%)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>EPS (TTM) vs TTM 1 Yr Ago (%)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>EPS - 5 Yr Growth Rate (%)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Capital Spending - 5 Yr Growth Rate (%)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+    <h2 class="sub-header">#Dividend Outlook</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Latest Value</th>
+                  <th>Industry Average</th>
+                  <th>Industry Low</th>
+                  <th>Industry High</th>
+                  <th>Sector Average</th>
+                  <th>Market Average</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dividend Yield (%)</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                  <td>Dividend Yield - 5 Yr Avg (%)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Dividend 5 Yr Growth Rate (%)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Payout Ratio (TTM)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Sales (MRQ) vs Qtr 1 Yr Ago (%)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Sales (TTM) vs TTM 1 Yr Ago (%)</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+
+
+{% endblock %}

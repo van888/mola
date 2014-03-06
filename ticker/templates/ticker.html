@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Mola Indicators</title>
+{% endblock %}
+
+    <h3>{{ ticker.symbol }}</h3>
+    <p>This page contains financial data for {{ ticker.company_name }} </p>
+
+
+
+{% block content %}
+
+    {% block Performance %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">{{ ticker.company_name }} <span style="font-size: 14px;">({{ ticker.symbol }}:{{ ticker.exchange_name }})</span></h1>
+
+        <h2 class="sub-header">Performance Tracking</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th> </th>
+                  <th>YTD</th>
+                  <th>1 Month</th>
+                  <th>3 Months</th>
+                  <th>6 Months</th>
+                  <th>12 Months</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Absolute Returns</td>
+                  <td>{{ ticker.performance.absolute_returns_ytd }}</td>
+                  <td>{{ ticker.performance.absolute_returns_1month }}</td>
+                  <td>{{ ticker.performance.absolute_returns_3month }}</td>
+                  <td>{{ ticker.performance.absolute_returns_6month }}</td>
+                  <td>{{ ticker.performance.absolute_returns_12month }}</td>
+                </tr>
+                <tr>
+                  <td>Relative to Industry</td>
+                  <td>{{ ticker.performance.rel_to_ind_returns_ytd }}</td>
+                  <td>{{ ticker.performance.rel_to_ind_returns_1month }}</td>
+                  <td>{{ ticker.performance.rel_to_ind_returns_3month }}</td>
+                  <td>{{ ticker.performance.rel_to_ind_returns_6month }}</td>
+                  <td>{{ ticker.performance.rel_to_ind_returns_12month }}</td>
+                </tr>
+                <tr>
+                  <td>Relative to Market</td>
+                  <td>{{ ticker.performance.rel_to_mkt_returns_ytd }}</td>
+                  <td>{{ ticker.performance.rel_to_mkt_returns_1month }}</td>
+                  <td>{{ ticker.performance.rel_to_mkt_returns_3month }}</td>
+                  <td>{{ ticker.performance.rel_to_mkt_returns_6month }}</td>
+                  <td>{{ ticker.performance.rel_to_mkt_returns_12month }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+        <h2 class="sub-header">Suggested Tickers</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th> </th>
+                  <th>YTD</th>
+                  <th>1 Month</th>
+                  <th>3 Months</th>
+                  <th>6 Months</th>
+                  <th>12 Months</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for p in sect %}
+                <tr>
+                  <td><a href="/finance/{{ p.ticker.symbol }}/">{{ p.ticker.symbol }}</a></td>
+                  <td>{{ p.ticker.performance.absolute_returns_ytd }}</td>
+                  <td>{{ p.ticker.performance.absolute_returns_1month }}</td>
+                  <td>{{ p.ticker.performance.absolute_returns_3month }}</td>
+                  <td>{{ p.ticker.performance.absolute_returns_6month }}</td>
+                  <td>{{ p.ticker.performance.absolute_returns_12month }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+    </div>
+    </div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="sub-header">Indicators</h2>
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+               <h3 class="sub-header">Sentiment Analysis Ranking</h3>
+                <tr>
+                  <th>Sentiment Composite</th>
+                  <th>Speculation Ranking</th>
+                  <th>Behavioral Ranking</th>
+                  <th>Liquidity Ranking</th>
+                  <th>Social Network</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ ticker.indicator.sentiment_composite }}</td>
+                  <td>{{ ticker.indicator.sentiment_PCVOLUME }}</td>
+                  <td>{{ ticker.indicator.sentiment_PCOI }}</td>
+                  <td>{{ ticker.indicator.sentiment_liquidity }}</td>
+                  <td>{{ ticker.indicator.sentiment_socNetwork }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+               <h3 class="sub-header">Technical Analysis Ranking</h3>
+                <tr>
+                  <th>Composite Score</th>
+                  <th>RSI</th>
+                  <th>Bollinger</th>
+                  <th>Stochastic</th>
+                  <th>MACD</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ ticker.indicator.tech_composite }}</td>
+                  <td>{{ ticker.indicator.tech_RSI }}</td>
+                  <td>{{ ticker.indicator.tech_bollinger }}</td>
+                  <td>{{ ticker.indicator.tech_stochastic }}</td>
+                  <td>{{ ticker.indicator.tech_MACD }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+               <h3 class="sub-header">Quantitative Ranking</h3>
+                <tr>
+                  <th>Composite Score</th>
+                  <th>Value</th>
+                  <th>Growth</th>
+                  <th>Profit</th>
+                  <th>Opportunity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ ticker.indicator.quant_composite }}</td>
+                  <td>{{ ticker.indicator.quant_value }}</td>
+                  <td>{{ ticker.indicator.quant_growth }}</td>
+                  <td>{{ ticker.indicator.quant_profit }}</td>
+                  <td>{{ ticker.indicator.quant_management }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+
+
+    {% endblock %}
+
+    {% block comment %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2>Comment</h2>
+        {% for c in ticker.comment_set.all %}
+            <p>{{ c.user }}: {{ c.body }}</p>
+            <p><a href="/finance/{{ ticker.symbol }}/{{ c.id }}/like">Likes</a> {{ c.likes }}</p>
+
+        {% endfor %}
+
+        <div>
+            <a class="btn btn-sm btn-warning" role="button" href="/finance/{{ ticker.symbol }}/add_comment/">   Add Comment  </a>
+        </div>
+    </div>
+    {% endblock %}
+
+{% endblock %}
